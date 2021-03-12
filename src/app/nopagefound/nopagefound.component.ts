@@ -6,7 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nopagefound.component.css'],
 })
 export class NopagefoundComponent implements OnInit {
-  constructor() {}
+  constructor() {
+    console.log('constructor');
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log('ngOnInit');
+  }
 }
