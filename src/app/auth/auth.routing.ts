@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 /* eslint-disable import/no-unresolved */
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';

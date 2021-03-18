@@ -1,16 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+/* eslint-disable class-methods-use-this */
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-grafica',
   templateUrl: './grafica.component.html',
-  styles: [
-  ]
+  styles: [],
 })
-export class GraficaComponent implements OnInit {
+export class GraficaComponent {
+  public labels1: string[] = ['Pan', 'In-Store Sales', 'Mail-Order Sales'];
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  public data1: any = [[900, 450, 100]];
 }

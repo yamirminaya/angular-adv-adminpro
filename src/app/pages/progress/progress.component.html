@@ -1,1 +1,62 @@
-<p>progress works!</p>
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Striped Progress Bar</h4>
+        <div class="progress m-t-30">
+          <div
+            class="progress-bar active progress-bar-striped active"
+            style="height: 5px"
+            role="progressbar"
+            [style.width]="getProgreso1"
+            [ngClass]="getClassBGProgreso1"
+          ></div>
+        </div>
+
+        <div class="progress m-t-30">
+          <div
+            class="progress-bar active progress-bar-striped active"
+            style="height: 5px"
+            role="progressbar"
+            [style.width]="getProgreso2"
+            [ngClass]="getClassBGProgreso2"
+          ></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-6">
+    <div class="card">
+      <div class="card-body">
+        <app-incrementador
+          [generalClass]="'primary'"
+          (generalClassSalida)="classProgreso1 = $event"
+          [valor]="progreso1"
+          (valor)="progreso1 = $event"
+        ></app-incrementador>
+        <!-- [btnClass]="'btn-danger'"
+          [bgProgressClass]="'bg-danger'"
+          (bgProgressClassSalida)="classProgreso1 = $event" -->
+      </div>
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="card">
+      <div class="card-body">
+        <app-incrementador
+          [generalClass]="'danger'"
+          (generalClassSalida)="classProgreso2 = $event"
+          [valor]="progreso2"
+          (valor)="progreso2 = $event"
+        ></app-incrementador>
+
+        <!-- [btnClass]="'btn-info'"
+          [bgProgressClass]="'bg-info'"
+          (bgProgressClassSalida)="classProgreso2 = $event" -->
+      </div>
+    </div>
+  </div>
+</div>
