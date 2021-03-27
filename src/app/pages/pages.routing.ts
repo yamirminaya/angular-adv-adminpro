@@ -7,6 +7,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { GraficaComponent } from './grafica/grafica.component';
 import { PagesComponent } from './pages.component';
 import { ProgressComponent } from './progress/progress.component';
+import { AccountSettingsComponent } from './account-settings/account-settings.component';
 
 const routes: Routes = [
   // { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -17,6 +18,7 @@ const routes: Routes = [
       { path: '', component: DashboardComponent },
       { path: 'progress', component: ProgressComponent },
       { path: 'grafica', component: GraficaComponent },
+      { path: 'account-settings', component: AccountSettingsComponent },
       // { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
     ],
   },

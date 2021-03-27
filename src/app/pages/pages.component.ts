@@ -1,16 +1,24 @@
+/* eslint-disable class-methods-use-this */
+/* eslint-disable no-unused-vars */
+/* eslint-disable import/no-unresolved */
+/* eslint-disable no-empty-function */
+/* eslint-disable no-useless-constructor */
+/* eslint-disable operator-linebreak */
 import { Component, OnInit } from '@angular/core';
+import { SettingService } from '../services/setting.service';
 
+declare function customInitFunctions();
 @Component({
   selector: 'app-pages',
   templateUrl: './pages.component.html',
-  styles: [
-  ]
+  styles: [],
 })
 export class PagesComponent implements OnInit {
+  linkTheme = document.querySelector('#theme');
 
-  constructor() { }
+  constructor(private settingsService: SettingService) {}
 
   ngOnInit(): void {
+    customInitFunctions();
   }
-
 }
