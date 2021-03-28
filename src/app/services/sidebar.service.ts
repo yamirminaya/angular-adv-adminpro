@@ -23,23 +23,13 @@ export class SidebarService {
           titulo: 'Gráficas',
           url: 'grafica',
         },
-      ],
-    },
-    {
-      titulo: 'Dashboard xxx',
-      icono: 'mdi mdi-gauge',
-      submenu: [
         {
-          titulo: 'Main',
-          url: '',
+          titulo: 'Promesas',
+          url: 'promesas',
         },
         {
-          titulo: 'ProgressBar',
-          url: 'progress',
-        },
-        {
-          titulo: 'Gráficas',
-          url: 'grafica',
+          titulo: 'RxJS',
+          url: 'rxjs',
         },
       ],
     },

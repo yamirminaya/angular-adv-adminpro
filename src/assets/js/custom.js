@@ -86,23 +86,23 @@ const customInitFunctions = () => {
     // ==============================================================
     // Auto select left navbar
     // ==============================================================
-    $(() => {
-      const url = window.location;
-      let element = $("ul#sidebarnav a")
-        .filter(function () {
-          return this.href == url;
-        })
-        .addClass("active")
-        .parent()
-        .addClass("active");
-      while (true) {
-        if (element.is("li")) {
-          element = element.parent().addClass("in").parent().addClass("active");
-        } else {
-          break;
-        }
-      }
-    });
+    // $(() => {
+    //   const url = window.location;
+    //   let element = $("ul#sidebarnav a")
+    //     .filter(function () {
+    //       return this.href == url;
+    //     })
+    //     .addClass("active")
+    //     .parent()
+    //     .addClass("active");
+    //   while (true) {
+    //     if (element.is("li")) {
+    //       element = element.parent().addClass("in").parent().addClass("active");
+    //     } else {
+    //       break;
+    //     }
+    //   }
+    // });
     // ==============================================================
     // tooltip
     // ==============================================================
