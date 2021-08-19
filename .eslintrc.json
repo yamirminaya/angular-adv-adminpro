@@ -11,7 +11,8 @@
   },
   "plugins": ["@typescript-eslint"],
   "rules": {
-    "import/prefer-default-export": "off",
-    "import/no-unresolved": [2, { "caseSensitive": false }]
+    "angular/file-name": 0
+    //"import/prefer-default-export": "off",
+    //"import/no-unresolved": [2, { "caseSensitive": false }]
   }
 }
