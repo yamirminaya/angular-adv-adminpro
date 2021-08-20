@@ -31,8 +31,9 @@ export class RegisterComponent {
   ) {}
 
   crearUsuario() {
+    // console.log(this.registerForm.value);
     this.formSubmitted = true;
-    console.log(this.registerForm);
+
     if (this.registerForm.invalid) {
       console.log('No correcto');
       return;

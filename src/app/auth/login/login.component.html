@@ -11,18 +11,19 @@
     <div class="login-box card">
       <div class="card-body">
         <form
+          [formGroup]="loginForm"
+          (ngSubmit)="login()"
           class="form-horizontal form-material"
           id="loginform"
-          (submit)="login()"
         >
           <h3 class="box-title m-b-20">Sign In</h3>
           <div class="form-group">
             <div class="col-xs-12">
               <input
                 class="form-control"
-                type="text"
-                required=""
-                placeholder="Username"
+                type="email"
+                placeholder="Correo electrónico"
+                formControlName="email"
               />
             </div>
           </div>
@@ -31,8 +32,8 @@
               <input
                 class="form-control"
                 type="password"
-                required=""
                 placeholder="Password"
+                formControlName="password"
               />
             </div>
           </div>
@@ -43,6 +44,7 @@
                   id="checkbox-signup"
                   type="checkbox"
                   class="filled-in chk-col-light-blue"
+                  formControlName="remember"
                 />
                 <label for="checkbox-signup"> Remember me </label>
               </div>
@@ -54,6 +56,17 @@
               >
             </div>
           </div>
+
+          <div class="form-group row">
+            <div class="col text-danger">
+              <p *ngIf="campoNoValido('email')">El email es obligatorio.</p>
+              <p *ngIf="campoNoValido('password')">
+                El password es obligatorio.
+              </p>
+              <!-- <p *ngIf="campoNoValido('email')">El email es obligatorio.</p> -->
+            </div>
+          </div>
+
           <div class="form-group text-center">
             <div class="col-xs-12 p-b-20">
               <button
@@ -65,25 +78,33 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 m-t-10 text-center">
-              <div class="social">
-                <a
-                  href="javascript:void(0)"
-                  class="btn btn-facebook"
-                  data-toggle="tooltip"
-                  title="Login with Facebook"
-                >
-                  <i aria-hidden="true" class="fa fa-facebook"></i>
-                </a>
-                <a
-                  href="javascript:void(0)"
-                  class="btn btn-googleplus"
-                  data-toggle="tooltip"
-                  title="Login with Google"
-                >
-                  <i aria-hidden="true" class="fa fa-google-plus"></i>
-                </a>
-              </div>
+            <div
+              class="col-xs-12 col-sm-12 col-md-12 mb-4 text-center"
+              id="google-btn"
+            >
+              <button
+                type="button"
+                (click)="loginGoogle()"
+                class="btn btn-danger"
+              >
+                Login with Google
+              </button>
+              <!-- <div
+                id="g_id_onload"
+                data-client_id="946236576850-lvvga2r6ud7rkj19c6of439237h9e60f.apps.googleusercontent.com"
+                data-login_uri="http://localhost:3000/api/login/g"
+                data-auto_prompt="false"
+                data-callback="handleCredentialResponse"
+              ></div>
+              <div
+                class="g_id_signin"
+                data-type="standard"
+                data-size="large"
+                data-theme="outline"
+                data-text="sign_in_with"
+                data-shape="rectangular"
+                data-logo_alignment="left"
+              ></div> -->
             </div>
           </div>
           <div class="form-group m-b-0">

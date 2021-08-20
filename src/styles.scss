@@ -7,6 +7,14 @@
   // border: 1px solid red !important;
 }
 
-#themecolors .selector {
+#themecolors .selector,
+.cursor {
   cursor: pointer;
+}
+
+#google-btn {
+  align-items: center;
+  display: flex;
+  text-align: center;
+  justify-content: center;
 }
