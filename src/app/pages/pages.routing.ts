@@ -19,6 +19,8 @@ import { UsuariosComponent } from './mantenimientos/usuarios/usuarios.component'
 import { HospitalesComponent } from './mantenimientos/hospitales/hospitales.component';
 import { MedicosComponent } from './mantenimientos/medicos/medicos.component';
 import { MedicoComponent } from './mantenimientos/medicos/medico.component';
+import { BusquedasComponent } from './busquedas/busquedas.component';
+import { AdminGuard } from '../guards/admin.guard';
 
 const routes: Routes = [
   // { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -33,9 +35,14 @@ const routes: Routes = [
         data: { titulo: 'Dashboard' },
       },
       {
-        path: 'progress',
-        component: ProgressComponent,
-        data: { titulo: 'Progress' },
+        path: 'account-settings',
+        component: AccountSettingsComponent,
+        data: { titulo: 'Account Settings' },
+      },
+      {
+        path: 'buscar/:termino',
+        component: BusquedasComponent,
+        data: { titulo: 'Búsquedas' },
       },
       {
         path: 'grafica',
@@ -43,9 +50,14 @@ const routes: Routes = [
         data: { titulo: 'Gráficas' },
       },
       {
-        path: 'account-settings',
-        component: AccountSettingsComponent,
-        data: { titulo: 'Account Settings' },
+        path: 'perfil',
+        component: PerfilComponent,
+        data: { titulo: 'Perfil de usuario' },
+      },
+      {
+        path: 'progress',
+        component: ProgressComponent,
+        data: { titulo: 'Progress' },
       },
       {
         path: 'promesas',
@@ -57,18 +69,8 @@ const routes: Routes = [
         component: RxjsComponent,
         data: { titulo: 'RxJS' },
       },
-      {
-        path: 'perfil',
-        component: PerfilComponent,
-        data: { titulo: 'Perfil de usuario' },
-      },
 
       // Mantenimientos
-      {
-        path: 'usuarios',
-        component: UsuariosComponent,
-        data: { titulo: 'Mantenimiento de Usuarios' },
-      },
       {
         path: 'hospitales',
         component: HospitalesComponent,
@@ -83,6 +85,14 @@ const routes: Routes = [
         path: 'medico/:id',
         component: MedicoComponent,
         data: { titulo: 'Mantenimiento de Médicos' },
+      },
+
+      // Rutas ADMIN
+      {
+        path: 'usuarios',
+        canActivate: [AdminGuard],
+        component: UsuariosComponent,
+        data: { titulo: 'Mantenimiento de Usuarios' },
       },
       // { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
     ],

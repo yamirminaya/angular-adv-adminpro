@@ -42,6 +42,10 @@ export class UsuarioService {
     return this.usuario.uid || '';
   }
 
+  get role(): 'ADMIN_ROLE' | 'USER_ROLE' {
+    return this.usuario.role;
+  }
+
   get headers() {
     return {
       headers: { 'x-token': this.token },
@@ -51,9 +55,12 @@ export class UsuarioService {
   validarToken(): Observable<boolean> {
     return this.http.get(`${base_url}/login/renew`, this.headers).pipe(
       map((resp: any) => {
+        const { token, menu } = resp;
+        this.guardarLocalStorage(token, menu);
+
         const { email, google, nombre, role, uid, img = '' } = resp.usuario;
         this.usuario = new Usuario(nombre, email, '', img, google, role, uid); // Información de usuario
-        localStorage.setItem('token', resp.token);
+
         return true;
       }),
       catchError((error) => of(false)) // Si existe un error, creamos un nuevo OBSERVABLE (OF) que retorna un FALSE
@@ -63,7 +70,8 @@ export class UsuarioService {
   crearUsuario(formData: RegisterForm) {
     return this.http.post(`${base_url}/usuarios`, formData).pipe(
       tap((resp: any) => {
-        localStorage.setItem('token', resp.token);
+        const { token, menu } = resp;
+        this.guardarLocalStorage(token, menu);
       })
     );
   }
@@ -83,7 +91,8 @@ export class UsuarioService {
   login(formData: LoginForm) {
     return this.http.post(`${base_url}/login`, formData).pipe(
       tap((resp: any) => {
-        localStorage.setItem('token', resp.token);
+        const { token, menu } = resp;
+        this.guardarLocalStorage(token, menu);
       })
     );
   }
@@ -91,13 +100,16 @@ export class UsuarioService {
   loginGoogle(token: string): any {
     return this.http.post(`${base_url}/login/google`, { token }).pipe(
       tap((resp: any) => {
-        localStorage.setItem('token', resp.token);
+        const { token, menu } = resp;
+        this.guardarLocalStorage(token, menu);
       })
     );
   }
 
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('menu');
+
     this.socialAuthService.signOut();
     this.router.navigateByUrl('/login');
   }
@@ -138,5 +150,10 @@ export class UsuarioService {
       usuario,
       this.headers
     );
+  }
+
+  guardarLocalStorage(token: string, menu: any) {
+    localStorage.setItem('token', token);
+    localStorage.setItem('menu', JSON.stringify(menu));
   }
 }

@@ -6,6 +6,7 @@
 /* eslint-disable operator-linebreak */
 import { Component, OnInit } from '@angular/core';
 import { SettingService } from '../services/setting.service';
+import { SidebarService } from '../services/sidebar.service';
 
 declare function customInitFunctions();
 @Component({
@@ -16,9 +17,13 @@ declare function customInitFunctions();
 export class PagesComponent implements OnInit {
   linkTheme = document.querySelector('#theme');
 
-  constructor(private settingsService: SettingService) {}
+  constructor(
+    private settingsService: SettingService,
+    private sidebarService: SidebarService
+  ) {}
 
   ngOnInit(): void {
     customInitFunctions();
+    this.sidebarService.cargarMenu();
   }
 }
